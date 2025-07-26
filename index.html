@@ -1,263 +1,1313 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuickResults Zimbabwe - Manage school exams</title>
-  <link rel="shortcut icon" href="./assets/images/favicon.png">
-  <link rel="stylesheet" href="./assets/css/plugins.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="preload" href="./assets/css/fonts/space.css" as="style" onload="this.rel='stylesheet'">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickPoster - Create Beautiful Posters via WhatsApp | Zimbabwe</title>
+    <meta name="description" content="Create stunning posters in 3 easy steps via WhatsApp. Perfect for Zimbabwean entrepreneurs, churches, and individuals. Get started today!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Color Variables */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --purple-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            --orange-gradient: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            
+            --primary-blue: #667eea;
+            --secondary-blue: #764ba2;
+            --accent-pink: #f093fb;
+            --accent-coral: #f5576c;
+            --success-cyan: #00f2fe;
+            --success-blue: #4facfe;
+            --mint-green: #43e97b;
+            --turquoise: #38f9d7;
+            
+            --text-dark: #2d3748;
+            --text-medium: #4a5568;
+            --text-light: #718096;
+            --white: #ffffff;
+            --gray-50: #f7fafc;
+            --gray-100: #edf2f7;
+            --gray-200: #e2e8f0;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-20px) translateY(-10px); }
+            50% { transform: translateX(20px) translateY(10px); }
+            75% { transform: translateX(-10px) translateY(20px); }
+        }
+
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '✨';
+            position: absolute;
+            top: -5px;
+            right: -25px;
+            font-size: 1rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
+        }
+
+        .nav-menu {
+            display: none;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu.active {
+            display: flex;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            flex-direction: column;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: var(--primary-gradient);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, 
+                rgba(102, 126, 234, 0.9) 0%, 
+                rgba(118, 75, 162, 0.9) 50%,
+                rgba(240, 147, 251, 0.9) 100%);
+            color: var(--white);
+            padding: 10rem 1rem 6rem;
+            text-align: center;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: patternMove 20s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(60px) translateY(60px); }
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 400;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--warning-gradient);
+            color: var(--white);
+            padding: 1.25rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(67, 233, 123, 0.4);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(67, 233, 123, 0.6);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 1rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-gradient);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        /* Categories Section */
+        .categories {
+            background: var(--white);
+            position: relative;
+        }
+
+        .categories::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23667eea' fill-opacity='0.03'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20v20h20z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .category-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+            border-color: var(--primary-blue);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            padding: 1rem;
+            border-radius: 20px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--secondary-gradient);
+        }
+
+        .category-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .category-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background: linear-gradient(135deg, var(--purple-gradient));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M50 50c0-27.614-22.386-50-50-50v50h50z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--success-gradient);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
+            position: relative;
+        }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid var(--success-blue);
+            border-radius: 50%;
+            opacity: 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+
+        .step h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .step p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Sample Posters Section */
+        .sample-posters {
+            background: var(--white);
+            position: relative;
+        }
+
+        .posters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .poster-sample {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .poster-sample:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .poster-image {
+            width: 100%;
+            height: 220px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poster-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .poster-sample:nth-child(2n) .poster-image {
+            background: var(--secondary-gradient);
+        }
+
+        .poster-sample:nth-child(3n) .poster-image {
+            background: var(--warning-gradient);
+        }
+
+        .poster-sample:nth-child(4n) .poster-image {
+            background: var(--success-gradient);
+        }
+
+        .poster-label {
+            padding: 1.5rem;
+            text-align: center;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            background: var(--white);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: linear-gradient(135deg, var(--orange-gradient));
+            position: relative;
+        }
+
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            position: relative;
+            border: 3px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        .pricing-card.featured {
+            background: var(--white);
+            border-color: var(--primary-blue);
+            transform: scale(1.05);
+            box-shadow: 0 25px 80px rgba(102, 126, 234, 0.3);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 80px rgba(0,0,0,0.2);
+        }
+
+        .pricing-badge {
+            background: var(--secondary-gradient);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 8px 25px rgba(118, 75, 162, 0.4);
+        }
+
+        .pricing-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            color: var(--text-medium);
+            position: relative;
+            padding-left: 2rem;
+            font-weight: 500;
+        }
+
+        .pricing-features li:before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--white);
+            position: relative;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn {
+            background: var(--primary-gradient);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            padding: 12px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--text-dark) 0%, #1a202c 100%);
+            color: var(--white);
+            padding: 4rem 1rem 2rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover::before {
+            width: 100%;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+            background: var(--secondary-gradient);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--warning-gradient);
+            color: var(--white);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 2rem;
+            box-shadow: 0 8px 25px rgba(67, 233, 123, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 35px rgba(67, 233, 123, 0.6);
+            animation: none;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: flex;
+                position: static;
+                background: none;
+                backdrop-filter: none;
+                box-shadow: none;
+                flex-direction: row;
+                padding: 0;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+
+            .hero p {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero {
+                padding: 12rem 1rem 8rem;
+            }
+
+            .section {
+                padding: 8rem 1rem;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gradient);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-gradient);
+        }
+    </style>
 </head>
-
 <body>
-  <div class="content-wrapper">
-    <header class="wrapper bg-light">
-      <div class="bg-primary text-white fw-bold fs-15 mb-2">
-        <div class="container py-1 d-md-flex flex-md-row">
-          <div class="d-flex flex-row align-items-center">
-            <div class="icon text-white fs-22 mt-1 me-2"> <i class="uil uil-phone-volume"></i></div>
-            <p class="mb-0">263 718 308 488</p>
-          </div>
-          <div class="d-flex flex-row align-items-center me-6 ms-auto">
-          </div>
-          <div class="d-flex flex-row align-items-center">
-            <div class="icon text-white fs-22 mt-1 me-2"> <i class="uil uil-message"></i></div>
-            <p class="mb-0"><a href="mailto:support@quick-results.online" class="link-white hover">support@quick-results.online</a></p>
-          </div>
-        </div>
-        <!-- /.container -->
-      </div>
-      <nav class="navbar navbar-expand-lg center-nav transparent navbar-light">
-        <div class="container flex-lg-row flex-nowrap align-items-center">
-          <div class="navbar-brand w-100">
-            <a href="https://quick-results.online/">
-              <img src="./assets/images/logo.png" srcset="./assets/images/logo.png 2x" alt=""  height="45px"/>
-            </a>
-          </div>
-          <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
-            <div class="offcanvas-header d-lg-none">
-              <h3 class="text-white fs-30 mb-0">QuickResults</h3>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
-
-              <!-- /.navbar-nav -->
-              <div class="offcanvas-footer d-lg-none">
-                <div>
-                  <a href="mailto:help@quickresults.co.zw" class="link-inverse">help@quickresults.co.zw</a>
-                  <br /> 263 718 308 488 <br />
-                </div>
-              </div>
-              <!-- /.offcanvas-footer -->
-            </div>
-            <!-- /.offcanvas-body -->
-          </div>
-          <!-- /.navbar-collapse -->
-          <div class="navbar-other w-100 d-flex ms-auto">
-            <ul class="navbar-nav flex-row align-items-center ms-auto">
-              <li class="nav-item d-none d-md-block">
-                <a href="https://school.quick-results.online/auth" class="btn btn-sm btn-ouline-primary rounded">SignUp</a>
-              </li>
-              <li class="nav-item d-md-block">
-                <a href="https://school.quick-results.online/auth" class="btn btn-sm btn-primary rounded">Login</a>
-              </li>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">QuickPoster</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <!-- /.navbar-nav -->
-          </div>
-          <!-- /.navbar-other -->
-        </div>
-        <!-- /.container -->
-      </nav>
-      <!-- /.navbar -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </nav>
     </header>
-    <!-- /header -->
-    <section class="wrapper">
-      <div class="container pt-11 pt-md-13 pb-19 pb-md-17 text-center">
-        <div class="row">
-          <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto" data-cues="slideInDown" data-group="page-title" data-delay="500">
-            <h1 class="display-1 ls-sm fs-64 mb-4 px-md-8 px-lg-0">Effortlessly manage and publish your school <span class="underline-3 style-1 primary"><em>exams</em></span> </h1>
-            <p class="lead fs-24 lh-sm mb-7">Say goodbye to tedious manual data entry. With QuickResults, schools can easily input student marks and generate accurate academic report cards in no time.</p>
-            <div>
-              <a href="https://school.quick-results.online/auth" class="btn btn-lg btn-primary rounded mb-10 mb-xxl-5">Get Started</a>
-            </div>
-          </div>
-          <!-- /column -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-          <div class="col-lg-10 col-xl-9 mx-auto mt-11 mb-n21">
-            <figure><img class="img-fluid" src="./assets/images/illustrations/i28.png" srcset="./assets/images/illustrations/i28@2x.png 2x" alt=""></figure>
-          </div>
-          <!-- /column -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container -->
-      <div class="overflow-hidden">
-        <div class="divider text-soft-primary mx-n2">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 70">
-            <path fill="currentColor" d="M1440,70H0V45.16a5762.49,5762.49,0,0,1,1440,0Z" />
-          </svg>
-        </div>
-      </div>
-    </section>
-    <!-- /section -->
-    <section class="wrapper bg-gradient-primary">
-      <div class="container pt-15 pt-md-17">
-        <!-- /.swiper-container -->
-        <div class="row text-center">
-          <div class="col-md-10 col-lg-9 col-xxl-7 mx-auto mb-12">
-            <h3 class="display-2 ls-sm px-xxl-10">The service we offer is <span class="underline-3 style-1 primary"><em>designed</em></span> to meet your school needs.</h3>
-          </div>
-          <!-- /column -->
-        </div>
-        <!-- /.row -->
-        <div class="row gy-10 align-items-center mb-15 mb-md-17">
-          <div class="col-lg-7">
-            <figure><img class="img-fluid" src="./assets/images/illustrations/i29.png" srcset="./assets/images/illustrations/i29@2x.png 2x" alt="" /></figure>
-          </div>
-          <!-- /column -->
-          <div class="col-lg-4 ms-auto">
-            <div class="svg-bg bg-pale-primary rounded mb-5"> <img src="./assets/images/icons/solid/like.svg" class="svg-inject icon-svg solid text-primary" alt="" /> </div>
-            <h3 class="h1 post-title ls-sm mb-3">Effortlessly manage and publish exams online.</h3>
-            <p>Say goodbye to manual inputting and tedious paperwork. With QuickResults, schools can easily input student marks and generate accurate academic report cards, all in one convenient application. Streamline your exam management process and save valuable time.</p>
-          </div>
-          <!-- /column -->
-        </div>
-        <!-- /.row -->
-        <div class="row gy-10 align-items-center mb-15 mb-md-17">
-          <div class="col-lg-7 order-lg-2">
-            <figure><img class="img-fluid" src="./assets/images/illustrations/i30.png" srcset="./assets/images/illustrations/i30@2x.png 2x" alt="" /></figure>
-          </div>
-          <!-- /column -->
-          <div class="col-lg-4 me-auto">
-            <div class="svg-bg bg-pale-green rounded mb-5"> <img src="./assets/images/icons/solid/layout-2.svg" class="svg-inject icon-svg solid text-green" alt="" /> </div>
-            <h3 class="h1 post-title ls-sm mb-3"> Streamline your grading process and focus on teaching</h3>
-            <p>Don't let the burden of grading take away from valuable classroom time. With QuickResults, automate and streamline your grading process, so you can spend more time focusing on what really matters - teaching and engaging with your students.</p>
-          </div>
-          <!-- /column -->
-        </div>
-        <!-- /.row -->
-        <div class="row gy-10 align-items-center">
-          <div class="col-lg-7">
-            <figure><img class="img-fluid" src="./assets/images/illustrations/i31.png" srcset="./assets/images/illustrations/i31@2x.png 2x" alt="" /></figure>
-          </div>
-          <!-- /column -->
-          <div class="col-lg-4 ms-auto">
-            <div class="svg-bg bg-pale-fuchsia rounded mb-5"> <img src="./assets/images/icons/solid/bullhorn.svg" class="svg-inject icon-svg solid text-fuchsia" alt="" /> </div>
-            <h3 class="h1 post-title ls-sm mb-3">Parents can stay connected with their children's progress from anywhere</h3>
-            <p>Don't miss out on important updates about your child's academic progress. With QuickResults, parents can receive their child's report card using any of our channels, ensuring you stay connected no matter where you are in the world.</p>
-          </div>
-          <!-- /column -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container -->
-    </section>
-    <!-- /section -->
-    <section class="wrapper bg-light">
-      <div class="container py-16 py-md-18">
-        <!--/.card -->
-        <div class="row text-center">
-          <!-- /column -->
-        </div>
-        <!-- /.row -->
-        <div class="row gy-10 align-items-center mb-15 mb-md-17">
-          <div class="col-lg-7 order-lg-2">
-              <div class="p-11 overflow-hidden">
-                <figure><img class="img-fluid" src="./assets/images/illustrations/ni4.png" srcset="./assets/images/illustrations/ni4.png 2x" alt="" /></figure>
-              </div>
-          </div>
-          <!-- /column -->
-          <div class="col-lg-4 me-auto">
-            <h3 class="h1 post-title ls-sm mb-2">Get a comprehensive view of academic performance.</h3>
-            <p class="mb-6">Don't get lost in the details. QuickResults provides a clear and concise summary of overall performance at the subject, class, and school level. Easily identify areas for improvement and celebrate achievements with our comprehensive reporting system.</p>
-          </div>
-          <!-- /column -->
-        </div>
-        <!-- /.row -->
-        <div class="row text-center mb-7">
-          <div class="col-lg-10 col-xl-9 col-xxl-8 mx-auto">
-            <h2 class="fs-16 text-uppercase text-muted mb-3">Join Our Community</h2>
-            <h3 class="display-2 ls-sm">We are <span class="underline-3 style-1 primary"><em>trusted</em></span> by over 300+ institutions. Join them now and grow your institution.</h3>
-          </div>
-          <!-- /column -->
-        </div>
-        <!-- /.row -->
-        <div class="row position-relative" style="z-index: 1">
-          <div class="col-lg-10 col-xl-9 mx-auto mt-11 mb-sm-n20 mb-md-n22">
-            <figure><img class="img-fluid" src="./assets/images/illustrations/i32.png" srcset="./assets/images/illustrations/i32@2x.png 2x" alt=""></figure>
-          </div>
-          <!-- /column -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container -->
-      <div class="overflow-hidden">
-        <div class="divider text-soft-primary mx-n2">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 70">
-            <path fill="currentColor" d="M1440,70H0V45.16a5762.49,5762.49,0,0,1,1440,0Z" />
-          </svg>
-        </div>
-      </div>
-    </section>
-    <!-- /section -->
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="bg-soft-primary">
-    <div class="container pt-17 pt-md-19 pb-14 pb-md-16">
-      <div class="row gy-6 gy-lg-0">
-        <div class="col-md-4 col-lg-3">
-          <div class="widget">
-            <img class="mb-4" src="./assets/images/logo.png" srcset="./assets/images/logo.png 2x" alt="" height="40px" />
-            <p class="mb-4">© <script>
-                document.write(new Date().getUTCFullYear());
-              </script> QuickResults. <br class="d-none d-lg-block" />All rights reserved.</p>
-            <!-- /.newsletter-wrapper -->
-          </div>
-          <!-- /.widget -->
-        </div>
-        <!-- /column -->
-        <div class="col-md-4 col-lg-3">
-          <div class="widget">
-          </div>
-          <!-- /.widget -->
-        </div>
-        <!-- /column -->
-        <div class="col-md-4 col-lg-3">
-          <div class="widget">
-            <h4 class="widget-title  mb-3">Learn More</h4>
-            <ul class="list-unstyled text-reset mb-0">
-              <li><a href="https://quick-results.online/terms">Terms of Use</a></li>
-              <li><a href="https://quick-results.online/terms">Privacy Policy</a></li>
-            </ul>
-          </div>
-          <!-- /.widget -->
-        </div>
-        <!-- /column -->
-        <div class="col-md-12 col-lg-3">
-          <div class="widget">
-            <!-- /.social -->
-            <h4 class="widget-title  mb-3">Get in Touch</h4>
-            <a href="mailto:#" class="link-body">help@quickresults.co.zw</a><br /> 263 718 308 488 <br/> 46 St Kentucky Road, Harare
-          </div>
-          <!-- /.widget -->
-        </div>
-        <!-- /column -->
-      </div>
-      <!--/.row -->
-    </div>
-    <!-- /.container -->
-  </footer>
-  <div class="progress-wrap">
-    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-    </svg>
-  </div>
-  <script src="./assets/js/plugins.js"></script>
-  <script src="./assets/js/theme.js"></script>
-</body>
 
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <!-- Floating Elements -->
+        <div class="floating-element">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="rgba(255,255,255,0.2)">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+        </div>
+        <div class="floating-element">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(255,255,255,0.2)">
+                <circle cx="12" cy="12" r="10"/>
+            </svg>
+        </div>
+        <div class="floating-element">
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="rgba(255,255,255,0.2)">
+                <polygon points="12,2 22,20 2,20"/>
+            </svg>
+        </div>
+
+        <div class="hero-container">
+            <h1>Create Beautiful Posters in 3 Easy Steps — via WhatsApp! 🎨</h1>
+            <p>Designed for Zimbabwean entrepreneurs, churches, and individuals who want stunning designs instantly! ✨</p>
+            <a href="https://wa.me/26377XXXXXXX" class="cta-button">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.106"/>
+                </svg>
+                Start Creating Now! 🚀
+            </a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">Poster Categories 🎯</h2>
+            <p class="section-subtitle">Choose from our wide range of poster categories designed for every need and occasion</p>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+                        </svg>
+                    </div>
+                    <h3>Business & Services 🏢</h3>
+                    <p>Professional posters for your business, services, and corporate events that make you stand out</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                            <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3>Product Promotion 🛍️</h3>
+                    <p>Eye-catching posters to showcase and promote your products with stunning visual appeal</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                        </svg>
+                    </div>
+                    <h3>Event & Church Posters ⛪</h3>
+                    <p>Beautiful designs for church services, conferences, and special events that inspire attendance</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                            <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                        </svg>
+                    </div>
+                    <h3>School & Education 🎓</h3>
+                    <p>Educational posters for schools, workshops, and learning events that engage and inform</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 5.5 15.5 8zM12 19c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
+                        </svg>
+                    </div>
+                    <h3>Birthday or Funeral Notices 🕊️</h3>
+                    <p>Respectful and beautiful designs for life celebrations and memorials with heartfelt elegance</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Custom Designs ✨</h3>
+                    <p>Unique, personalized posters tailored to your specific requirements and creative vision</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works 🔥</h2>
+            <p class="section-subtitle">Get your professional poster in just 3 simple steps - it's that easy!</p>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Select Category 🎯</h3>
+                    <p>Choose from our wide range of poster categories that best fits your needs and vision</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Describe Poster 📝</h3>
+                    <p>Provide details like title, time, venue, colors, and any specific requirements you have in mind</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Upload Image & Get Result! 📸</h3>
+                    <p>Send us your image and receive your beautiful, professional poster directly on WhatsApp!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Posters Section -->
+    <section class="section sample-posters">
+        <div class="container">
+            <h2 class="section-title">Sample Poster Designs 🎨</h2>
+            <p class="section-subtitle">See the quality and variety of posters we create for our amazing clients</p>
+            
+            <div class="posters-grid">
+                <div class="poster-sample">
+                    <div class="poster-image">🏢</div>
+                    <div class="poster-label">Business Ad Poster</div>
+                </div>
+                
+                <div class="poster-sample">
+                    <div class="poster-image">⛪</div>
+                    <div class="poster-label">Church Service Poster</div>
+                </div>
+                
+                <div class="poster-sample">
+                    <div class="poster-image">🛍️</div>
+                    <div class="poster-label">Product Promo Poster</div>
+                </div>
+                
+                <div class="poster-sample">
+                    <div class="poster-image">🎉</div>
+                    <div class="poster-label">Event Flyer</div>
+                </div>
+                
+                <div class="poster-sample">
+                    <div class="poster-image">🎓</div>
+                    <div class="poster-label">Education Poster</div>
+                </div>
+                
+                <div class="poster-sample">
+                    <div class="poster-image">🎂</div>
+                    <div class="poster-label">Birthday Poster</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple Pricing 💰</h2>
+            <p class="section-subtitle">Choose the plan that works best for you and your creative needs</p>
+            
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <h3>Free Plan 🆓</h3>
+                    <div class="pricing-price">Free</div>
+                    <ul class="pricing-features">
+                        <li>5 basic posters</li>
+                        <li>Standard quality designs</li>
+                        <li>Basic templates</li>
+                        <li>Limited categories</li>
+                    </ul>
+                    <a href="https://wa.me/26377XXXXXXX" class="cta-button">Get Started Free! 🚀</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">🔥 Most Popular</div>
+                    <h3>Pro Plan ⭐</h3>
+                    <div class="pricing-price">USD 5<span style="font-size: 1rem; font-weight: 400;">/month</span></div>
+                    <ul class="pricing-features">
+                        <li>25 posters</li>
+                        <li>Premium templates</li>
+                        <li>Fast delivery</li>
+                        <li>Unlimited categories</li>
+                    </ul>
+                    <a href="https://wa.me/26377XXXXXXX" class="cta-button">Upgrade Now! ⚡</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch 📞</h2>
+            <p class="section-subtitle">Have questions? We're here to help you create amazing posters!</p>
+            
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name ✨</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address 📧</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message 💬</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell us how we can help you..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message 🚀</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Contact Information 📋</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Email Us 📧</strong><br>
+                            support@quickposter.online
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.106"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>WhatsApp 💬</strong><br>
+                            +263 77 XXX XXXX
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+        </div>
+
+    </footer>
+</body>
 </html>

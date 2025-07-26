@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - QuickPoster</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --warning-gradient: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --gray-50: #f7fafc;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .back-link {
+            background: var(--success-gradient);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(67, 233, 123, 0.3);
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 233, 123, 0.4);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 3rem;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary-gradient);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        ul {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--primary-gradient);
+            position: relative;
+        }
+
+        .highlight::before {
+            content: '🔒';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .security-badge {
+            background: var(--success-gradient);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: inline-block;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(67, 233, 123, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--warning-gradient));
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .data-table th {
+            background: var(--primary-gradient);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .content {
+                padding: 2rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .data-table {
+                font-size: 0.9rem;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">QuickPoster</a>
+            <a href="index.html" class="back-link">← Back to Home 🏠</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Privacy Policy 🛡️</h1>
+        <p class="last-updated">Last updated: January 26, 2025 ✨</p>
+
+        <div class="content">
+            <div class="highlight">
+                <p><strong>Your Privacy Matters! 🔐</strong> This Privacy Policy explains how QuickPoster collects, uses, and protects your personal information when you use our WhatsApp poster creation service. We're committed to keeping your data safe!</p>
+            </div>
+
+            <div class="security-badge">🔒 Your Data is 100% Secure</div>
+
+            <h2>1. Information We Collect 📊</h2>
+            <p>We collect the following types of information to provide our amazing poster creation service:</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data Type 📋</th>
+                        <th>What We Collect 📝</th>
+                        <th>Purpose 🎯</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>WhatsApp Number 📱</strong></td>
+                        <td>Your phone number used for WhatsApp</td>
+                        <td>To send you completed posters and communicate about your orders</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Name ✨</strong></td>
+                        <td>Your name as provided in messages</td>
+                        <td>To personalize our service and address you properly</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Poster Content 🎨</strong></td>
+                        <td>Text, descriptions, and requirements you provide</td>
+                        <td>To create posters according to your specifications</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Images 📸</strong></td>
+                        <td>Photos and graphics you upload</td>
+                        <td>To incorporate into your poster designs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Usage Data 📈</strong></td>
+                        <td>Service usage patterns and preferences</td>
+                        <td>To improve our service and user experience</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>2. How We Use Your Information 🚀</h2>
+            <p>We use your personal information for the following purposes:</p>
+            <ul>
+                <li><strong>🎨 Service Delivery:</strong> To create and deliver your custom posters</li>
+                <li><strong>💬 Communication:</strong> To respond to your inquiries and provide customer support</li>
+                <li><strong>📈 Service Improvement:</strong> To analyze usage patterns and enhance our offerings</li>
+                <li><strong>✅ Quality Assurance:</strong> To ensure the quality and accuracy of our poster designs</li>
+                <li><strong>💳 Account Management:</strong> To manage your subscription and billing (for paid plans)</li>
+            </ul>
+
+            <h2>3. Information Sharing and Disclosure 🤝</h2>
+            <p>We respect your privacy and do not share your personal information with third parties, except in the following limited circumstances:</p>
+            <ul>
+                <li><strong>🔧 Service Providers:</strong> We may share data with trusted service providers who help us operate our business (e.g., payment processors)</li>
+                <li><strong>⚖️ Legal Requirements:</strong> We may disclose information if required by law or to protect our rights</li>
+                <li><strong>🏢 Business Transfers:</strong> In the event of a merger or acquisition, your information may be transferred</li>
+            </ul>
+
+            <div class="highlight">
+                <p><strong>Important Promise! 🤝</strong> We never sell, rent, or trade your personal information to third parties for marketing purposes. Your trust is everything to us!</p>
+            </div>
+
+            <h2>4. Data Security 🛡️</h2>
+            <p>We implement top-notch security measures to protect your personal information:</p>
+            <ul>
+                <li>🔐 Encrypted data transmission and storage</li>
+                <li>🔑 Access controls and authentication systems</li>
+                <li>🔍 Regular security audits and updates</li>
+                <li>👨‍💼 Staff training on data protection practices</li>
+            </ul>
+
+            <h2>5. EcoCash Payment Data 💰</h2>
+            <p>For users who subscribe to our paid plans:</p>
+            <ul>
+                <li>📱 EcoCash payment data is handled separately and securely</li>
+                <li>🚫 We do not store your EcoCash PIN or sensitive payment details</li>
+                <li>🔒 Payment processing is handled through secure, encrypted channels</li>
+                <li>📋 Transaction records are kept for accounting and dispute resolution purposes only</li>
+            </ul>
+
+            <h2>6. Data Retention ⏰</h2>
+            <p>We retain your personal information for as long as necessary to provide our services:</p>
+            <ul>
+                <li><strong>✅ Active Users:</strong> Data is retained while your account is active</li>
+                <li><strong>😴 Inactive Users:</strong> Data is deleted after 12 months of inactivity</li>
+                <li><strong>🎨 Poster Content:</strong> Stored for 30 days after delivery for quality assurance</li>
+                <li><strong>💳 Payment Records:</strong> Kept for 7 years as required by law</li>
+            </ul>
+
+            <h2>7. Your Rights and Choices 🎯</h2>
+            <p>You have the following rights regarding your personal information:</p>
+            <ul>
+                <li><strong>👀 Access:</strong> Request a copy of the personal information we hold about you</li>
+                <li><strong>✏️ Correction:</strong> Request correction of inaccurate or incomplete information</li>
+                <li><strong>🗑️ Deletion:</strong> Request deletion of your personal information</li>
+                <li><strong>📦 Portability:</strong> Request transfer of your data to another service</li>
+                <li><strong>🛑 Objection:</strong> Object to certain uses of your personal information</li>
+            </ul>
+
+            <h2>8. Data Deletion Requests 🗑️</h2>
+            <p>You can request deletion of your data at any time by:</p>
+            <ul>
+                <li>💬 Sending a WhatsApp message to our support number</li>
+                <li>📧 Emailing us at support@quickposter.co.zw</li>
+                <li>⚡ We will process deletion requests within 30 days</li>
+                <li>📋 Some data may be retained for legal or legitimate business purposes</li>
+            </ul>
+
+            <h2>9. Children's Privacy 👶</h2>
+            <p>Our service is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If we become aware that we have collected such information, we will take steps to delete it promptly.</p>
+
+            <h2>10. International Data Transfers 🌍</h2>
+            <p>Your information is primarily processed and stored in Zimbabwe 🇿🇼. If we need to transfer data internationally, we ensure appropriate safeguards are in place to protect your privacy.</p>
+
+            <h2>11. Changes to This Privacy Policy 📝</h2>
+            <p>We may update this Privacy Policy from time to time. When we do:</p>
+            <ul>
+                <li>🌐 We will post the updated policy on our website</li>
+                <li>📱 We will notify active users via WhatsApp</li>
+                <li>📅 The "Last Updated" date will be revised</li>
+                <li>✅ Continued use of our service constitutes acceptance of changes</li>
+            </ul>
+
+            <h2>12. Cookies and Tracking 🍪</h2>
+            <p>Our website may use cookies and similar technologies to:</p>
+            <ul>
+                <li>⚡ Improve website functionality and user experience</li>
+                <li>📊 Analyze website traffic and usage patterns</li>
+                <li>💾 Remember your preferences and settings</li>
+            </ul>
+            <p>You can control cookie settings through your browser preferences.</p>
+
+            <div class="contact-info">
+                <h3>Privacy Questions or Concerns? 🤔</h3>
+                <p>If you have any questions about this Privacy Policy or how we handle your personal information, please contact us:</p>
+                <p><strong>support@quickposter.online</strong> </p>
+            </div>
+
+            <div class="highlight">
+                <p><strong>Your Trust is Everything! 💖</strong> We are committed to protecting your privacy and handling your personal information responsibly. If you have any concerns, please don't hesitate to reach out to us. We're here to help!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
